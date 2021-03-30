@@ -1,16 +1,19 @@
-#Trabajando con los contenidos de los archvios que pueden acceder en el curso:
+# Trabajando con los contenidos de los archvios que pueden acceder en el curso:
 # Copiar el contenido de los archvios en variables de tipo string y realizar.
-# •generar una estructura con los nombres de los estudiantes y la suma de ambas.
-# •Calcular el promedio de las notas totales e informar quiénes obtuvieron 
+# •generar una estructura con los nombres de los estudiantes y la suma de ambas
+# •Calcular el promedio de las notas totales e informar quiénes obtuvieron
 # menos que el promedio.notas.
 
 def generar_lista_numeros(string_recibida):
-    """Genera una lista de enteros a partir de una string separada por comas y saltos de linea"""
+    """Genera una lista de enteros a partir de una string separada por comas
+     y saltos de linea"""
     lista_temporal = string_recibida.split(",\n")
     lista_devolver = []
     for elem in lista_temporal:
         lista_devolver.append(int(elem)) 
     return lista_devolver
+
+
 def generar_lista(string_recibida):
     """Genera lista de strings a partir de una string recibida"""
     lista_temporal = string_recibida.split(",\n")
@@ -19,6 +22,7 @@ def generar_lista(string_recibida):
         lista_devolver.append(elem.replace("'", "").strip().capitalize())
 
     return lista_devolver
+
 
 nombres = """'Agustin',
  'Alan',
@@ -169,14 +173,13 @@ lista_notas_uno = generar_lista_numeros(evaluacion_uno)
 lista_notas_dos = generar_lista_numeros(evaluacion_dos)
 listado_final = {}
 promedio = 0
-#popular diccionario y calcular promedio
+# popular diccionario y calcular promedio
 for elem in range(len(lista_nombres)):
     listado_final[lista_nombres[elem]] = lista_notas_uno[elem] + lista_notas_dos[elem]
     promedio += lista_notas_uno[elem] + lista_notas_dos[elem]
 promedio /= len(lista_nombres) + len(lista_nombres)
-#imprimir estudiantes con promedio menor al promedio general
+# imprimir estudiantes con promedio menor al promedio general
 print("Los estudiantes con promedio menor al general son:")
 for elem in listado_final:
     if listado_final[elem] / 2 < promedio:
         print(elem)
-

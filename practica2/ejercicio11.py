@@ -303,10 +303,10 @@ lista_raw = [categoria for categoria in lista_raw if categoria != ""]
 diccionario = {}
 for indice in range(len(lista_raw)):
     if lista_raw[indice][0].isalpha():
-        diccionario[lista_raw[indice]]={"cantidad":0, "categorias":[]}
+        diccionario[lista_raw[indice]] = {"cantidad": 0, "categorias": []}
         indice_auxiliar = indice
     else:
-        diccionario[lista_raw[indice_auxiliar]]["cantidad"]+=1
+        diccionario[lista_raw[indice_auxiliar]]["cantidad"] += 1
         diccionario[lista_raw[indice_auxiliar]]["categorias"].append(lista_raw[indice].strip())
 
 print(diccionario)

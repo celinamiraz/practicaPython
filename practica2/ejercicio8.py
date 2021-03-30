@@ -1,13 +1,3 @@
-#Con la información de los archivos de texto que se encuentran disponibles en el curso:
-# •nombres_1
-# •nombres_2
-# Nota: Trabaje con los datos en variables de tipo string.
-# •Indique los nombres que se encuentran en ambos.
-# Nota: pruebe utilizando list comprehen-sion.
-# •Genere dos variables con la lista de notas que se incluyen en los archivos:
-# nombres_1,eval1.txtyeval2.txt e imprima con formato los nombres 
-# de los estudiantes con las correspondientesnota y la suma de ambas como se ve en laimagen
-
 def generar_lista(string_recibida):
     """Genera lista de strings a partir de una string recibida"""
     lista_temporal = string_recibida.split(",\n")
@@ -17,6 +7,7 @@ def generar_lista(string_recibida):
 
     return lista_devolver
 
+
 def generar_lista_numeros(string_recibida):
     """Genera una lista de enteros a partir de una string separada por comas y saltos de linea"""
     lista_temporal = string_recibida.split(",\n")
@@ -24,6 +15,7 @@ def generar_lista_numeros(string_recibida):
     for elem in lista_temporal:
         lista_devolver.append(int(elem)) 
     return lista_devolver
+
 
 nombres1 = """'Agustin',
  'Alan',

@@ -1,4 +1,5 @@
-#Tomando el texto del README.md de numpy, 
+#
+# Tomando el texto del README.md de numpy, 
 # imprima todas las líneas que contienen ‘http’ o‘https’
 
 texto = """NumPy is the fundamental package needed for scientific computing with Python.
@@ -55,7 +56,7 @@ print("Imprimo todas las lineas que contienen 'http' o 'https':")
 for i in texto_procesado:
     if 'http' in i.strip():
         print(i)
-#ejercicio 2 encontrar la palabra que mas se repite en el texto
+# ejercicio 2 encontrar la palabra que mas se repite en el texto
 print("-" * 30)
 texto_sin_espacios = texto.split(" ")
 texto_sin_espacios.sort()
@@ -66,5 +67,4 @@ for elem in texto_sin_espacios:
     if texto_sin_espacios.count(elem) > contador:
         palabra = elem
         contador = texto_sin_espacios.count(elem)
-print(f"La palabra '{palabra}' aparece {contador} veces en el archivo README.md")
-
+print(f"La palabra '{palabra}' aparece {contador} veces en README.md")
