@@ -4,24 +4,19 @@
 # •Calcular el promedio de las notas totales e informar quiénes obtuvieron
 # menos que el promedio.notas.
 
-def generar_lista_numeros(string_recibida):
+def generar_lista_numeros(string_raw):
     """Genera una lista de enteros a partir de una string separada por comas
      y saltos de linea"""
-    lista_temporal = string_recibida.split(",\n")
-    lista_devolver = []
-    for elem in lista_temporal:
-        lista_devolver.append(int(elem)) 
-    return lista_devolver
+    lista = string_raw.replace(" ", "").replace("\n", "").split(",")
+    lista = [int(nota) for nota in lista]
+    return lista
+# return list(map(int, string_raw.replace(" ", "").replace("\n", "").split(",")))
 
 
-def generar_lista(string_recibida):
+def generar_lista(string_raw):
     """Genera lista de strings a partir de una string recibida"""
-    lista_temporal = string_recibida.split(",\n")
-    lista_devolver = []
-    for elem in lista_temporal:
-        lista_devolver.append(elem.replace("'", "").strip().capitalize())
-
-    return lista_devolver
+    list = string_raw.replace(" ", "").replace('"', '').title().split(',\n')
+    return list
 
 
 nombres = """'Agustin',
@@ -169,14 +164,14 @@ evaluacion_dos = """30,
  10
 """
 lista_nombres = generar_lista(nombres)
-lista_notas_uno = generar_lista_numeros(evaluacion_uno)
-lista_notas_dos = generar_lista_numeros(evaluacion_dos)
+notas_uno = generar_lista_numeros(evaluacion_uno)
+notas_dos = generar_lista_numeros(evaluacion_dos)
 listado_final = {}
 promedio = 0
 # popular diccionario y calcular promedio
 for elem in range(len(lista_nombres)):
-    listado_final[lista_nombres[elem]] = lista_notas_uno[elem] + lista_notas_dos[elem]
-    promedio += lista_notas_uno[elem] + lista_notas_dos[elem]
+    listado_final[lista_nombres[elem]] = notas_uno[elem] + notas_dos[elem]
+    promedio += notas_uno[elem] + notas_dos[elem]
 promedio /= len(lista_nombres) + len(lista_nombres)
 # imprimir estudiantes con promedio menor al promedio general
 print("Los estudiantes con promedio menor al general son:")

@@ -1,20 +1,19 @@
-def generar_lista(string_recibida):
+def generar_lista_numeros(string_raw):
+    """Genera una lista de enteros a partir de una string separada por comas
+     y saltos de linea"""
+    lista = string_raw.replace(" ", "").replace("\n", "").split(",")
+    lista = [int(nota) for nota in lista]
+    return lista
+
+
+def generar_lista(string_raw):
     """Genera lista de strings a partir de una string recibida"""
-    lista_temporal = string_recibida.split(",\n")
-    lista_devolver = []
-    for elem in lista_temporal:
-        lista_devolver.append(elem.replace("'", "").strip().capitalize())
-
-    return lista_devolver
-
-
-def generar_lista_numeros(string_recibida):
-    """Genera una lista de enteros a partir de una string separada por comas y saltos de linea"""
-    lista_temporal = string_recibida.split(",\n")
-    lista_devolver = []
-    for elem in lista_temporal:
-        lista_devolver.append(int(elem)) 
-    return lista_devolver
+    list = (string_raw.replace(" ", "")
+            .replace('"', '')
+            .replace("\n", "")
+            .title()
+            .split(','))
+    return list
 
 
 nombres1 = """'Agustin',
@@ -221,17 +220,24 @@ evaluacion_dos = """30,
  10
 """
 
-lista_nombres1 = generar_lista(nombres1)
-lista_nombres2 = generar_lista(nombres2)
-lista_notas_uno = generar_lista_numeros(evaluacion_uno)
-lista_notas_dos = generar_lista_numeros(evaluacion_dos)
-lista_repetidos = [nombre for nombre in lista_nombres1 if nombre in lista_nombres2]
+l_nombres1 = generar_lista(nombres1)
+l_nombres2 = generar_lista(nombres2)
+notas_uno = generar_lista_numeros(evaluacion_uno)
+notas_dos = generar_lista_numeros(evaluacion_dos)
+lista_repetidos = [nombre for nombre in l_nombres1 if nombre in l_nombres2]
 print("Este es el listado de los nombres repetidos:")
 print(lista_repetidos)
 print("*"*30)
-listado_notas_finales = []
-for elem in range(len(lista_nombres1)):
-    listado_notas_finales.append((lista_notas_uno[elem], lista_notas_dos[elem], lista_notas_uno[elem] + lista_notas_dos[elem]))
-print("Nombre".center(15), "Eval1".center(35), "Eval2".center(25), "Total".center(55))
-for elem in range(len(listado_notas_finales)):
-    print(str(elem).rjust(3), str(lista_nombres1[elem]).ljust(10), str(listado_notas_finales[elem][0]).rjust(20), str(listado_notas_finales[elem][1]).rjust(30), str(listado_notas_finales[elem][2]).rjust(40))
+listado_final = []
+for elem in range(len(l_nombres1)):
+    listado_final.append((notas_uno[elem],
+                          notas_dos[elem],
+                          notas_uno[elem] + notas_dos[elem]))
+print("Nombre".center(15), "Eval1".center(35),
+      "Eval2".center(25), "Total".center(55))
+for elem in range(len(listado_final)):
+    print(str(elem).rjust(3),
+          str(l_nombres1[elem]).ljust(10),
+          str(listado_final[elem][0]).rjust(20),
+          str(listado_final[elem][1]).rjust(30),
+          str(listado_final[elem][2]).rjust(40))
